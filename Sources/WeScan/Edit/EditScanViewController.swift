@@ -188,11 +188,9 @@ public final class EditScanViewController: UIViewController {
 
     let croppedImage = UIImage.from(ciImage: filteredImage)
     
-    // Если есть делегат - используем его, иначе переходим к Review
     if let delegate = delegate {
         delegate.editScanViewController(self, didFinishEditing: croppedImage)
     } else {
-        // Оригинальный код для Review
         let enhancedImage = filteredImage.applyingAdaptiveThreshold()?.withFixedOrientation()
         let enhancedScan = enhancedImage.flatMap { ImageScannerScan(image: $0) }
 
