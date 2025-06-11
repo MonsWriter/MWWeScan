@@ -9,6 +9,11 @@
 import AVFoundation
 import UIKit
 
+public protocol EditScanViewControllerDelegate: AnyObject {
+    func editScanViewController(_ controller: EditScanViewController, didFinishEditing image: UIImage)
+    func editScanViewControllerDidCancel(_ controller: EditScanViewController)
+}
+
 /// The `EditScanViewController` offers an interface for the user to edit the detected quadrilateral.
 public final class EditScanViewController: UIViewController {
 
