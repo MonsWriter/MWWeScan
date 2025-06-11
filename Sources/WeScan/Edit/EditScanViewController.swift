@@ -17,6 +17,8 @@ public protocol EditScanViewControllerDelegate: AnyObject {
 /// The `EditScanViewController` offers an interface for the user to edit the detected quadrilateral.
 public final class EditScanViewController: UIViewController {
 
+    public weak var delegate: EditScanViewControllerDelegate?
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
