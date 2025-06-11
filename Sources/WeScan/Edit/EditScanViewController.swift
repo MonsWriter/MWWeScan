@@ -30,7 +30,7 @@ public final class EditScanViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var quadView: QuadrilateralView = {
+    public lazy var quadView: QuadrilateralView = {
         let quadView = QuadrilateralView()
         quadView.editable = true
         quadView.translatesAutoresizingMaskIntoConstraints = false
