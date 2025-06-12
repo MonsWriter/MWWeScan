@@ -212,10 +212,12 @@ public final class QuadrilateralView: UIView {
     private func drawQuad(_ quad: Quadrilateral, animated: Bool) {
         var path = quad.path
 
-        if editable {
+        if editable && showScreenBorders {
             path = path.reversing()
             let rectPath = UIBezierPath(rect: bounds)
             path.append(rectPath)
+        } else if editable {
+            quadLayer.fillColor = UIColor(white: 0.0, alpha: 0.6).cgColor
         }
 
         if animated == true {
