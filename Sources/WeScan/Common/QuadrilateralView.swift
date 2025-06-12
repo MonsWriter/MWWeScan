@@ -67,37 +67,36 @@ public final class QuadrilateralView: UIView {
     }
 
     /// Set stroke width of image rect and corner.
-public var strokeWidth: CGFloat = 2.0 {
-    didSet {
-        quadLayer.lineWidth = strokeWidth
-    }
-}
-
-/// Set corner view size (both normal and highlighted will be proportionally adjusted)
-public var cornerSize: CGFloat = 25.0 {
-    didSet {
-        updateCornerViewSizes()
-        if let quad = quad {
-            layoutCornerViews(forQuad: quad)
+    public var strokeWidth: CGFloat = 2.0 {
+        didSet {
+            quadLayer.lineWidth = strokeWidth
         }
     }
-}
 
-/// Set highlighted corner view size
-public var highlightedCornerSize: CGFloat = 85.0 {
-    didSet {
-        // Highlighted size будет использоваться при highlight
+    /// Set corner view size (both normal and highlighted will be proportionally adjusted)
+    public var cornerSize: CGFloat = 25.0 {
+        didSet {
+            updateCornerViewSizes()
+            if let quad = quad {
+                layoutCornerViews(forQuad: quad)
+            }
+        }
     }
-}
 
-// Добавьте эти вычисляемые свойства вместо старых константных
-private var cornerViewSize: CGSize {
-    return CGSize(width: cornerSize, height: cornerSize)
-}
+    /// Set highlighted corner view size
+    public var highlightedCornerSize: CGFloat = 85.0 {
+        didSet {
+            // Highlighted size будет использоваться при highlight
+        }
+    }
 
-private var highlightedCornerViewSize: CGSize {
-    return CGSize(width: highlightedCornerSize, height: highlightedCornerSize)
-}
+    private var cornerViewSize: CGSize {
+        return CGSize(width: cornerSize, height: cornerSize)
+    }
+
+    private var highlightedCornerViewSize: CGSize {
+        return CGSize(width: highlightedCornerSize, height: highlightedCornerSize)
+    }
 
     private var isHighlighted = false {
         didSet (oldValue) {
@@ -128,9 +127,6 @@ private var highlightedCornerViewSize: CGSize {
     private lazy var bottomLeftCornerView: EditScanCornerView = {
         return EditScanCornerView(frame: CGRect(origin: .zero, size: cornerViewSize), position: .bottomLeft)
     }()
-
-    private let highlightedCornerViewSize = CGSize(width: 75.0, height: 75.0)
-    private let cornerViewSize = CGSize(width: 20.0, height: 20.0)
 
     // MARK: - Life Cycle
 
