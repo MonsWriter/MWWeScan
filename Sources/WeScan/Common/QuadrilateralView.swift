@@ -145,6 +145,7 @@ public final class QuadrilateralView: UIView {
         setupCornerViews()
         setupConstraints()
         quadView.layer.addSublayer(quadLayer)
+        quadLayer.lineWidth = strokeWidth
     }
 
     private func setupConstraints() {
