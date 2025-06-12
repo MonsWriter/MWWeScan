@@ -59,6 +59,7 @@ public final class QuadrilateralView: UIView {
     public var strokeColor: CGColor? {
         didSet {
             quadLayer.strokeColor = strokeColor
+            quadLayer.lineWidth = strokeWidth
             topLeftCornerView.strokeColor = strokeColor
             topRightCornerView.strokeColor = strokeColor
             bottomRightCornerView.strokeColor = strokeColor
