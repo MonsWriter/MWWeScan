@@ -257,6 +257,14 @@ public final class QuadrilateralView: UIView {
         bottomLeftCornerView.setNeedsDisplay()
     }
 
+    /// Updates the stroke width of all corner views
+    private func updateCornerStrokeWidths() {
+        topLeftCornerView.strokeWidth = cornerStrokeWidth
+        topRightCornerView.strokeWidth = cornerStrokeWidth
+        bottomRightCornerView.strokeWidth = cornerStrokeWidth
+        bottomLeftCornerView.strokeWidth = cornerStrokeWidth
+    }
+
     // MARK: - Actions
 
     func moveCorner(cornerView: EditScanCornerView, atPoint point: CGPoint) {
