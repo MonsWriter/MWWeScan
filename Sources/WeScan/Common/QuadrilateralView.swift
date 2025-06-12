@@ -80,6 +80,7 @@ public final class QuadrilateralView: UIView {
             topRightCornerView.strokeColor = strokeColor
             bottomRightCornerView.strokeColor = strokeColor
             bottomLeftCornerView.strokeColor = strokeColor
+            updateCornerStrokeWidths()
         }
     }
 
