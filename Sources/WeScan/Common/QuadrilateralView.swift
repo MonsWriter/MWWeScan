@@ -55,6 +55,22 @@ public final class QuadrilateralView: UIView {
         }
     }
 
+    /// Show screen borders when in editable mode
+    public var showScreenBorders: Bool = false {
+        didSet {
+            if let quad = quad {
+                drawQuad(quad, animated: false)
+            }
+        }
+    }
+
+    /// Set corner view stroke width
+    public var cornerStrokeWidth: CGFloat = 1.0 {
+        didSet {
+            updateCornerStrokeWidths()
+        }
+    }
+
     /// Set stroke color of image rect and corner.
     public var strokeColor: CGColor? {
         didSet {
