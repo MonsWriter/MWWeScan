@@ -86,7 +86,7 @@ public final class QuadrilateralView: UIView {
     /// Set highlighted corner view size
     public var highlightedCornerSize: CGFloat = 85.0 {
         didSet {
-            // Highlighted size будет использоваться при highlight
+            
         }
     }
 
