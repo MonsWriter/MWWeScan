@@ -33,12 +33,21 @@ final class EditScanCornerView: UIView {
         }
     }
 
+    /// Set stroke width of corner layer
+    public var strokeWidth: CGFloat = 1.0 {
+        didSet {
+            circleLayer.lineWidth = strokeWidth
+            setNeedsDisplay()
+        }
+    }    
+
     init(frame: CGRect, position: CornerPosition) {
         self.position = position
         super.init(frame: frame)
         backgroundColor = UIColor.clear
         clipsToBounds = true
         layer.addSublayer(circleLayer)
+        circleLayer.lineWidth = strokeWidth
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +62,7 @@ final class EditScanCornerView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        let bezierPath = UIBezierPath(ovalIn: rect.insetBy(dx: circleLayer.lineWidth, dy: circleLayer.lineWidth))
+        let bezierPath = UIBezierPath(ovalIn: rect.insetBy(dx: strokeWidth, dy: strokeWidth))
         circleLayer.frame = rect
         circleLayer.path = bezierPath.cgPath
 
