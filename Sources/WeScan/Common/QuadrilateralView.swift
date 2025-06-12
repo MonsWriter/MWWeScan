@@ -180,6 +180,7 @@ public final class QuadrilateralView: UIView {
         addSubview(topRightCornerView)
         addSubview(bottomRightCornerView)
         addSubview(bottomLeftCornerView)
+        updateCornerStrokeWidths()
     }
 
     override public func layoutSubviews() {
