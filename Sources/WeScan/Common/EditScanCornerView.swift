@@ -39,7 +39,15 @@ final class EditScanCornerView: UIView {
             circleLayer.lineWidth = strokeWidth
             setNeedsDisplay()
         }
-    }    
+    }
+
+    /// Magnification scale for the image inside the corner view
+    /// 1.0 = no magnification, 2.0 = 2x zoom, etc.
+    public var magnificationScale: CGFloat = 2.0 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
 
     init(frame: CGRect, position: CornerPosition) {
         self.position = position
