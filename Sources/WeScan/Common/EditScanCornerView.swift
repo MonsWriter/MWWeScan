@@ -74,7 +74,40 @@ final class EditScanCornerView: UIView {
         circleLayer.frame = rect
         circleLayer.path = bezierPath.cgPath
 
-        image?.draw(in: rect)
+        if let image = image {
+            drawMagnifiedImage(image, in: rect)
+        }
+    }
+
+    private func drawMagnifiedImage(_ image: UIImage, in rect: CGRect) {
+        guard let cgImage = image.cgImage else {
+            image.draw(in: rect)
+            return
+        }
+        
+        let imageSize = image.size
+        let cornerSize = rect.size
+        
+        let sourceWidth = cornerSize.width / magnificationScale
+        let sourceHeight = cornerSize.height / magnificationScale
+        
+        let centerX = imageSize.width / 2.0  
+        let centerY = imageSize.height / 2.0
+        
+        let sourceRect = CGRect(
+            x: max(0, centerX - sourceWidth / 2),
+            y: max(0, centerY - sourceHeight / 2),
+            width: min(sourceWidth, imageSize.width),
+            height: min(sourceHeight, imageSize.height)
+        )
+        
+        if let croppedCGImage = cgImage.cropping(to: sourceRect) {
+            let croppedImage = UIImage(cgImage: croppedCGImage)
+            croppedImage.draw(in: rect)
+        } else {
+            // Fallback
+            image.draw(in: rect)
+        }
     }
 
     func highlightWithImage(_ image: UIImage) {
