@@ -108,6 +108,13 @@ public final class QuadrilateralView: UIView {
         }
     }
 
+    /// Set magnification scale for corner views
+    public var magnificationScale: CGFloat = 2.0 {
+        didSet {
+            updateCornerMagnificationScales()
+        }
+    }
+
     private var cornerViewSize: CGSize {
         return CGSize(width: cornerSize, height: cornerSize)
     }
@@ -371,6 +378,14 @@ public final class QuadrilateralView: UIView {
         }
 
         return quad
+    }
+
+    /// Updates the magnification scale of all corner views
+    private func updateCornerMagnificationScales() {
+        topLeftCornerView.magnificationScale = magnificationScale
+        topRightCornerView.magnificationScale = magnificationScale
+        bottomRightCornerView.magnificationScale = magnificationScale
+        bottomLeftCornerView.magnificationScale = magnificationScale
     }
 
     func cornerViewForCornerPosition(position: CornerPosition) -> EditScanCornerView {
