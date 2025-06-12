@@ -224,6 +224,21 @@ public final class QuadrilateralView: UIView {
         quadLayer.isHidden = true
     }
 
+    /// Updates the size of all corner views to match the current cornerSize setting
+    private func updateCornerViewSizes() {
+        let newSize = cornerViewSize
+    
+        topLeftCornerView.frame.size = newSize
+        topRightCornerView.frame.size = newSize
+        bottomRightCornerView.frame.size = newSize
+        bottomLeftCornerView.frame.size = newSize
+    
+        topLeftCornerView.setNeedsDisplay()
+        topRightCornerView.setNeedsDisplay()
+        bottomRightCornerView.setNeedsDisplay()
+        bottomLeftCornerView.setNeedsDisplay()
+    }
+
     // MARK: - Actions
 
     func moveCorner(cornerView: EditScanCornerView, atPoint point: CGPoint) {
