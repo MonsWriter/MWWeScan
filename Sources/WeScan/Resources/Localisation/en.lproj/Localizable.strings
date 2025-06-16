@@ -7,7 +7,7 @@
 */
 
 /* The "Next" button on the right side of the navigation bar on the Edit screen. */
-"wescan.edit.button.next" = "Next";
+"wescan.edit.button.next" = "Done";
 
 /* The title on the navigation bar of the Edit screen. */
 "wescan.edit.title" = "Edit Scan";
